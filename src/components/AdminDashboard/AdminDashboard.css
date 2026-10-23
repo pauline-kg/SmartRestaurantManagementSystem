@@ -1,0 +1,97 @@
+.admin-container {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.admin-tabs button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #f1f3f5;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.admin-tabs button.active {
+  background-color: #1d3557;
+  color: white;
+}
+
+.admin-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.add-item-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.add-item-form input, .add-item-form select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-item-form button {
+  background-color: #2a9d8f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+}
+
+.delete-btn {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.approve-btn {
+  background-color: #2a9d8f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.order-status-text {
+  font-size: 0.85rem;
+  color: #666;
+}

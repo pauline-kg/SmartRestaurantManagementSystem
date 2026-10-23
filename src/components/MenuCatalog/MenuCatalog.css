@@ -1,0 +1,146 @@
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter-panel {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.category-btn.active {
+  background-color: #e63946;
+  color: #fff;
+  border-color: #e63946;
+}
+
+.dietary-checkboxes {
+  display: flex;
+  gap: 20px;
+  font-size: 0.95rem;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.food-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.food-card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.food-card-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.food-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.food-price {
+  font-weight: bold;
+  color: #2a9d8f;
+  font-size: 1.1rem;
+}
+
+.food-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.food-ingredients {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.food-tags {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.tag.veg {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.tag.gf {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
+
+.add-cart-btn {
+  margin-top: auto;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.add-cart-btn:hover {
+  background-color: #d62828;
+}
+
+.no-items {
+  text-align: center;
+  color: #777;
+  grid-column: 1 / -1;
+  padding: 40px;
+}

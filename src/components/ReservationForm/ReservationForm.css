@@ -1,0 +1,60 @@
+.reservation-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.reservation-container h2 {
+  margin-bottom: 20px;
+  color: #1d3557;
+}
+
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input, .form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.reserve-btn {
+  background-color: #e63946;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.reserve-btn:hover {
+  background-color: #d62828;
+}
