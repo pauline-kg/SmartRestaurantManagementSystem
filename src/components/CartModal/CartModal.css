@@ -1,43 +1,47 @@
+/* --- Modal Background Overlay --- */
 .modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: gray; /* Simple solid background instead of transparent black */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 200;
+  z-index: 200; /* Keeps the modal on top of everything else */
 }
 
+/* --- Cart Modal Box --- */
 .cart-modal {
   background-color: white;
   width: 90%;
   max-width: 500px;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border: 2px solid black; /* Clear border outline */
 }
 
+/* --- Modal Header --- */
 .cart-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 2px solid lightgray;
   padding-bottom: 10px;
 }
 
 .close-btn {
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 24px;
   cursor: pointer;
 }
 
+/* --- Cart Items List Area --- */
 .cart-items {
   max-height: 250px;
-  overflow-y: auto;
+  overflow-y: auto; /* Turns on scrolling when there are too many items */
   margin: 15px 0;
 }
 
@@ -46,58 +50,64 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid #f9f9f9;
+  border-bottom: 1px solid lightgray;
 }
 
+/* --- Quantity Plus/Minus Buttons --- */
 .quantity-controls {
   display: flex;
-  gap: 10px;
+  gap: 10px; /* Spaces out the plus and minus buttons */
   align-items: center;
 }
 
 .quantity-controls button {
   padding: 4px 10px;
-  border: 1px solid #ccc;
-  background-color: #f0f0f0;
+  border: 1px solid gray;
+  background-color: lightgray;
   cursor: pointer;
   border-radius: 4px;
 }
 
+/* --- Delivery / Pickup Options --- */
 .fulfillment-selector {
   display: flex;
-  gap: 20px;
+  gap: 20px; /* Spaces out the radio options */
   margin: 15px 0;
   padding: 10px;
-  background-color: #f8f9fa;
+  background-color: whitesmoke;
   border-radius: 6px;
+  border: 1px solid lightgray;
 }
 
+/* --- Total Price Row --- */
 .total-row {
   display: flex;
   justify-content: space-between;
-  font-size: 1.2rem;
+  font-size: 18px; /* Active font size makes totals stand out */
   font-weight: bold;
   margin-bottom: 15px;
 }
 
 .total-price {
-  color: #e63946;
+  color: lightblue;
 }
 
+/* --- Checkout Button --- */
 .checkout-btn {
   width: 100%;
-  background-color: #2a9d8f;
+  background-color: green;
   color: white;
   border: none;
   padding: 12px;
-  font-size: 1rem;
+  font-size: 16px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
 }
 
+/* --- Empty Cart Message --- */
 .empty-cart {
   padding: 30px 0;
   text-align: center;
-  color: #777;
+  color: gray;
 }
