@@ -1,41 +1,34 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-export default function Navbar({ activeTab, setActiveTab, cartCount, onOpenCart }) {
+// TODO: check if mobile nav breaks on smaller screen sizes later
+function Navbar({ cartCount, onOpenCart }) {
+  
+  const handleCartClick = () => {
+    console.log("Opening cart modal, current items count:", cartCount);
+    onOpenCart();
+  };
+
   return (
     <header className="navbar">
-      <div className="navbar-logo" onClick={() => setActiveTab('menu')}>
-        🍽️ Savory Bistro
-      </div>
+      <Link to="/" className="navbar-logo" style={{ textDecoration: 'none' }}>
+        🍽️ Smart Restaurant Management System
+      </Link>
+
+      {/* main navigation links using react-router-dom */}
       <nav className="navbar-links">
-        <button 
-          className={activeTab === 'menu' ? 'nav-btn active' : 'nav-btn'} 
-          onClick={() => setActiveTab('menu')}
-        >
-          Menu
-        </button>
-        <button 
-          className={activeTab === 'reservations' ? 'nav-btn active' : 'nav-btn'} 
-          onClick={() => setActiveTab('reservations')}
-        >
-          Reservations
-        </button>
-        <button 
-          className={activeTab === 'ai' ? 'nav-btn active' : 'nav-btn'} 
-          onClick={() => setActiveTab('ai')}
-        >
-          🤖 AI Assistant
-        </button>
-        <button 
-          className={activeTab === 'admin' ? 'nav-btn active' : 'nav-btn'} 
-          onClick={() => setActiveTab('admin')}
-        >
-          Admin Dashboard
-        </button>
+        <Link to="/" className="nav-btn">Menu</Link>
+        <Link to="/reservations" className="nav-btn">Reservations</Link>
+        <Link to="/ai-assistant" className="nav-btn">🤖 AI Assistant</Link>
+        <Link to="/admin" className="nav-btn">Admin Dashboard</Link>
       </nav>
-      <button className="cart-badge-btn" onClick={onOpenCart}>
+
+      <button className="cart-badge-btn" onClick={handleCartClick}>
         🛒 Cart ({cartCount})
       </button>
     </header>
   );
 }
+
+export default Navbar;
