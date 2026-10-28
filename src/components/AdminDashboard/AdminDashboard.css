@@ -1,54 +1,62 @@
+/* --- Main Container --- */
 .admin-container {
-  background-color: #fff;
-  padding: 25px;
+  background-color: white;
+  width: 80%;
+  margin: 30px auto; /* Centers the container on the page */
+  padding: 20px;
+  border: 2px solid black; /* Simple, clear border instead of shadows */
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
+/* --- Tabs Styling --- */
 .admin-tabs {
   display: flex;
-  gap: 10px;
-  margin: 15px 0;
-  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+  border-bottom: 2px solid lightgray;
   padding-bottom: 10px;
 }
 
 .admin-tabs button {
-  padding: 8px 16px;
-  border: none;
-  background-color: #f1f3f5;
+  padding: 10px 20px;
+  margin-right: 10px; /* Spacing between buttons */
+  border: 1px solid gray;
+  background-color: lightgray;
   cursor: pointer;
   border-radius: 4px;
 }
 
+/* Active tab style */
 .admin-tabs button.active {
-  background-color: #1d3557;
+  background-color: black;
   color: white;
 }
 
+/* --- Form Styling --- */
 .admin-section {
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
 .add-item-form {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
-  background-color: #f8f9fa;
+  gap: 10px; /* Modern spacing property */
+  background-color: #f9f9f9;
   padding: 15px;
+  border: 1px solid lightgray;
   border-radius: 6px;
+  margin-bottom: 20px;
 }
 
-.add-item-form input, .add-item-form select {
+.add-item-form input, 
+.add-item-form select {
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid gray;
   border-radius: 4px;
 }
 
 .add-item-form button {
-  background-color: #2a9d8f;
+  background-color: green;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -56,11 +64,10 @@
   cursor: pointer;
 }
 
+/* --- List & Items Styling --- */
 .admin-list {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  padding: 0; /* Clears default browser padding */
 }
 
 .admin-list li {
@@ -68,12 +75,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px;
-  border: 1px solid #eee;
+  margin-bottom: 10px; /* Spacing between list items */
+  border: 1px solid lightgray;
   border-radius: 6px;
+  background-color: white;
 }
 
+/* --- Buttons & Text --- */
 .delete-btn {
-  background-color: #e63946;
+  background-color: lightgreen;
   color: white;
   border: none;
   padding: 6px 12px;
@@ -82,7 +92,7 @@
 }
 
 .approve-btn {
-  background-color: #2a9d8f;
+  background-color: blue;
   color: white;
   border: none;
   padding: 6px 12px;
@@ -92,6 +102,6 @@
 }
 
 .order-status-text {
-  font-size: 0.85rem;
-  color: #666;
+  font-size: 14px;
+  color: gray;
 }
