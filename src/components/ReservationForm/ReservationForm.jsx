@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './ReservationForm.css';
 
-export default function ReservationForm({ onAddReservation }) {
+// TODO: make sure form validation checks if date is in the past later
+function ReservationForm({ onAddReservation }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,14 +14,32 @@ export default function ReservationForm({ onAddReservation }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddReservation({ ...formData, id: Date.now(), status: 'Pending' });
+    console.log("Submitting reservation form data:", formData); // debug log
+
+    const newReservation = {
+      ...formData,
+      id: Date.now(),
+      status: 'Pending'
+    };
+
+    onAddReservation(newReservation);
     alert(`Reservation booked successfully for ${formData.name}!`);
-    setFormData({ name: '', email: '', date: '', time: '', guests: '2', eventType: 'Standard Table' });
+    
+    // reset form fields back to default
+    setFormData({ 
+      name: '', 
+      email: '', 
+      date: '', 
+      time: '', 
+      guests: '2', 
+      eventType: 'Standard Table' 
+    });
   };
 
   return (
     <div className="reservation-container">
       <h2>Book a Table or Event</h2>
+      
       <form onSubmit={handleSubmit} className="reservation-form">
         <div className="form-group">
           <label>Full Name</label>
@@ -95,3 +114,5 @@ export default function ReservationForm({ onAddReservation }) {
     </div>
   );
 }
+
+export default ReservationForm;
