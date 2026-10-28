@@ -1,25 +1,30 @@
+/* --- Global Reset --- */
+/* The star (*) applies these rules to EVERY element on the page */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Keeps padding and borders from messing up element widths */
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: sans-serif; /* Clean, standard default font */
 }
 
+/* --- Basic Page Setup --- */
 body {
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: whitesmoke;
+  color: black;
 }
 
+/* --- App Container (Full Screen Layout) --- */
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; /* Forces the app to take up at least the full height of the screen */
 }
 
+/* --- Main Content Area --- */
 .main-content {
-  flex: 1;
+  flex: 1; /* Expands to fill available middle space */
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto; /* Centers the content box horizontally on the page */
   padding: 20px;
 }
