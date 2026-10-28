@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import './CartModal.css';
 
-export default function CartModal({ cart, onClose, onUpdateQuantity, onCheckout }) {
+// TODO: fix background scrolling when modal is open if it acts weird
+function CartModal({ cart, onClose, onUpdateQuantity, onCheckout }) {
   const [fulfillment, setFulfillment] = useState('Delivery');
 
+  // calculate total price for cart items
+  // let total = 0;
+  // cart.forEach(i => total += i.price * i.quantity); -> old way, reduce is cleaner
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const handleCheckoutClick = () => {
+    console.log("checking out with type:", fulfillment);
+    onCheckout(fulfillment);
+  };
 
   return (
     <div className="modal-backdrop">
@@ -34,6 +43,7 @@ export default function CartModal({ cart, onClose, onUpdateQuantity, onCheckout 
               ))}
             </div>
 
+            {/* fulfillment choice */}
             <div className="fulfillment-selector">
               <label>
                 <input 
@@ -58,7 +68,7 @@ export default function CartModal({ cart, onClose, onUpdateQuantity, onCheckout 
                 <span>Total:</span>
                 <span className="total-price">${total.toFixed(2)}</span>
               </div>
-              <button className="checkout-btn" onClick={() => onCheckout(fulfillment)}>
+              <button className="checkout-btn" onClick={handleCheckoutClick}>
                 Confirm Order
               </button>
             </div>
@@ -68,3 +78,5 @@ export default function CartModal({ cart, onClose, onUpdateQuantity, onCheckout 
     </div>
   );
 }
+
+export default CartModal;
