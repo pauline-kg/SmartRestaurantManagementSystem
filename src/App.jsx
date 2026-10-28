@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import Navbar from './components/NavBar/NavBar';
-import MenuCatalog from './components/MenuCatalog/MenuCatalog';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartModal from './components/CartModal/CartModal';
+
+import MenuCatalog from './components/MenuCatalog/MenuCatalog';
 import ReservationForm from './components/ReservationForm/ReservationForm';
 import AIChat from './components/AIChat/AIChat';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+
 import { INITIAL_MENU } from './data/mockData';
 import './App.css';
+import Navbar from './components/NavBar/NavBar';
 
-export default function App() {
-  const [activeTab, setActiveTab] = useState('menu');
+// TODO: check if router routes cause any weird full page reloads later
+function App() {
   const [menuItems, setMenuItems] = useState(INITIAL_MENU);
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -18,6 +21,8 @@ export default function App() {
 
   // Cart operations
   const addToCart = (item) => {
+    console.log("adding item to cart:", item.name);
+    
     setCart((prev) => {
       const existing = prev.find((i) => i.id === item.id);
       if (existing) {
@@ -30,8 +35,8 @@ export default function App() {
   };
 
   const updateQuantity = (id, delta) => {
-    setCart((prev) =>
-      prev
+    const updatedCart = prev => {
+      return prev
         .map((item) => {
           if (item.id === id) {
             const newQty = item.quantity + delta;
@@ -39,11 +44,14 @@ export default function App() {
           }
           return item;
         })
-        .filter(Boolean)
-    );
+        .filter(Boolean);
+    };
+    setCart(updatedCart);
   };
 
   const placeOrder = (fulfillmentType) => {
+    console.log("placing order with type:", fulfillmentType);
+
     const newOrder = {
       id: `#ORD-${Date.now().toString().slice(-4)}`,
       items: cart,
@@ -52,6 +60,7 @@ export default function App() {
       status: 'Preparing',
       date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
+
     setOrders((prev) => [newOrder, ...prev]);
     setCart([]);
     setIsCartOpen(false);
@@ -59,42 +68,42 @@ export default function App() {
   };
 
   return (
-    <div className="app-container">
-      <Navbar 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
-        cartCount={cart.reduce((sum, i) => sum + i.quantity, 0)}
-        onOpenCart={() => setIsCartOpen(true)}
-      />
+    <BrowserRouter>
+      <div className="app-container">
+        <Navbar 
+          cartCount={cart.reduce((sum, i) => sum + i.quantity, 0)}
+          onOpenCart={() => setIsCartOpen(true)}
+        />
 
-      <main className="main-content">
-        {activeTab === 'menu' && (
-          <MenuCatalog menuItems={menuItems} onAddToCart={addToCart} />
-        )}
-        {activeTab === 'reservations' && (
-          <ReservationForm onAddReservation={(res) => setReservations((prev) => [res, ...prev])} />
-        )}
-        {activeTab === 'ai' && <AIChat />}
-        {activeTab === 'admin' && (
-          <AdminDashboard 
-            menuItems={menuItems}
-            setMenuItems={setMenuItems}
-            orders={orders}
-            setOrders={setOrders}
-            reservations={reservations}
-            setReservations={setReservations}
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<MenuCatalog menuItems={menuItems} onAddToCart={addToCart} />} />
+            <Route path="/reservations" element={<ReservationForm onAddReservation={(res) => setReservations((prev) => [res, ...prev])} />} />
+            <Route path="/ai-assistant" element={<AIChat />} />
+            <Route path="/admin" element={
+              <AdminDashboard 
+                menuItems={menuItems}
+                setMenuItems={setMenuItems}
+                orders={orders}
+                setOrders={setOrders}
+                reservations={reservations}
+                setReservations={setReservations}
+              />
+            } />
+          </Routes>
+        </main>
+
+        {isCartOpen && (
+          <CartModal 
+            cart={cart} 
+            onClose={() => setIsCartOpen(false)} 
+            onUpdateQuantity={updateQuantity}
+            onCheckout={placeOrder}
           />
         )}
-      </main>
-
-      {isCartOpen && (
-        <CartModal 
-          cart={cart} 
-          onClose={() => setIsCartOpen(false)} 
-          onUpdateQuantity={updateQuantity}
-          onCheckout={placeOrder}
-        />
-      )}
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
+
+export default App;
