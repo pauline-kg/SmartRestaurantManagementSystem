@@ -1,27 +1,30 @@
+/* --- Main Menu Container --- */
 .menu-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 20px; /* Spaces out the filter panel from the food grid */
 }
 
+/* --- Filter & Search Panel --- */
 .filter-panel {
-  background-color: #ffffff;
+  background-color: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border: 2px solid lightgray; /* Clear outline instead of shadows */
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 15px; /* Spaces out search bar, tabs, and checkboxes */
 }
 
 .search-input {
   width: 100%;
   padding: 10px 15px;
-  border: 1px solid #ddd;
+  border: 1px solid gray;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
+/* Category Filter Tabs */
 .category-tabs {
   display: flex;
   gap: 10px;
@@ -30,35 +33,39 @@
 
 .category-btn {
   padding: 8px 16px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  border-radius: 20px;
+  border: 1px solid gray;
+  background-color: white;
+  border-radius: 20px; /* Creates pill-shaped buttons */
   cursor: pointer;
 }
 
 .category-btn.active {
-  background-color: #e63946;
-  color: #fff;
-  border-color: #e63946;
+  background-color: lightgreen;
+  color: white;
+  border-color: lightgreen;
 }
 
+/* Dietary Checkboxes */
 .dietary-checkboxes {
   display: flex;
   gap: 20px;
-  font-size: 0.95rem;
+  font-size: 14px;
 }
 
+/* --- Food Grid Layout --- */
 .food-grid {
   display: grid;
+  /* Automatically fits as many columns as possible (min 280px wide each) */
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
 
+/* --- Individual Food Card --- */
 .food-card {
-  background-color: #fff;
+  background-color: white;
   border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  overflow: hidden; /* Keeps images neatly inside rounded corners */
+  border: 1px solid lightgray;
   display: flex;
   flex-direction: column;
 }
@@ -66,7 +73,7 @@
 .food-card-img {
   width: 100%;
   height: 180px;
-  object-fit: cover;
+  object-fit: cover; /* Ensures images scale nicely without distorting */
 }
 
 .food-card-body {
@@ -85,22 +92,23 @@
 
 .food-price {
   font-weight: bold;
-  color: #2a9d8f;
-  font-size: 1.1rem;
+  color: green;
+  font-size: 18px;
 }
 
 .food-desc {
-  font-size: 0.9rem;
-  color: #666;
+  font-size: 14px;
+  color: gray;
   margin-bottom: 10px;
 }
 
 .food-ingredients {
-  font-size: 0.8rem;
-  color: #888;
+  font-size: 12px;
+  color: darkgray;
   margin-bottom: 12px;
 }
 
+/* --- Tags (Vegetarian, Gluten-Free) --- */
 .food-tags {
   display: flex;
   gap: 6px;
@@ -108,39 +116,41 @@
 }
 
 .tag {
-  font-size: 0.75rem;
+  font-size: 12px;
   padding: 3px 8px;
   border-radius: 4px;
 }
 
 .tag.veg {
-  background-color: #e8f5e9;
-  color: #2e7d32;
+  background-color: lightgreen;
+  color: darkgreen;
 }
 
 .tag.gf {
-  background-color: #fff3e0;
-  color: #ef6c00;
+  background-color: lightyellow;
+  color: darkorange;
 }
 
+/* --- Add to Cart Button --- */
 .add-cart-btn {
-  margin-top: auto;
-  background-color: #e63946;
+  margin-top: auto; /* Pushes button cleanly to the bottom of the card */
+  background-color: green;
   color: white;
   border: none;
   padding: 10px;
   border-radius: 6px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .add-cart-btn:hover {
-  background-color: #d62828;
+  background-color: lightgreen;
 }
 
+/* --- Empty Search Result State --- */
 .no-items {
   text-align: center;
-  color: #777;
-  grid-column: 1 / -1;
+  color: gray;
+  grid-column: 1 / -1; /* Spans across all grid columns */
   padding: 40px;
 }
