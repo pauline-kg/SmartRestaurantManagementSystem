@@ -19,7 +19,7 @@ export const INITIAL_MENU = [
     ingredients: "Fettuccine, Heavy Cream, Parmesan, Chicken",
     isVegetarian: false,
     isGlutenFree: false,
-    image: "https://images.unsplash.com/photo-1645112411341-6c4fd023882c?w=500&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?w=500&auto=format&fit=crop"
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ export const INITIAL_MENU = [
     ingredients: "Penne, Zucchini, Bell Peppers, Tomatoes, Olive Oil",
     isVegetarian: true,
     isGlutenFree: false,
-    image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281281?w=500&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500&auto=format&fit=crop"
   },
   {
     id: 4,
