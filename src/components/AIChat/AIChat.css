@@ -1,94 +1,99 @@
+/* --- Main Chat Box Container --- */
 .chat-container {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background-color: white;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 30px auto; /* Centers the chat box on the page */
+  height: 500px;
+  border: 2px solid black;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  height: 550px;
 }
 
+/* --- Top Header --- */
 .chat-header {
-  background-color: #1d3557;
+  background-color: darkblue;
   color: white;
   padding: 15px;
   font-weight: bold;
-  border-radius: 8px 8px 0 0;
 }
 
+/* --- Messages Scroll Area --- */
 .chat-messages {
-  flex: 1;
+  flex: 1; /* Takes up all available middle space */
   padding: 15px;
-  overflow-y: auto;
+  overflow-y: auto; /* Lets the chat scroll when there are too many messages */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 10px; /* Creates clean spacing between messages */
 }
 
+/* --- Individual Chat Bubbles --- */
 .chat-bubble {
   max-width: 75%;
   padding: 10px 14px;
-  border-radius: 12px;
-  font-size: 0.95rem;
+  border-radius: 10px;
 }
 
+/* User messages align to the right side */
 .chat-bubble.user {
   align-self: flex-end;
-  background-color: #e63946;
+  background-color: lightgreen;
   color: white;
 }
 
+/* AI messages align to the left side */
 .chat-bubble.ai {
   align-self: flex-start;
-  background-color: #f1f3f5;
-  color: #333;
+  background-color: lightgray;
+  color: black;
 }
 
+/* --- Quick Sample Buttons Area --- */
 .sample-queries {
   padding: 10px 15px;
-  border-top: 1px solid #eee;
-  background-color: #fafafa;
+  border-top: 1px solid lightgray;
+  background-color: whitesmoke;
 }
 
 .sample-queries p {
-  font-size: 0.8rem;
-  color: #777;
+  font-size: 12px;
+  color: gray;
   margin-bottom: 5px;
 }
 
 .query-buttons {
   display: flex;
-  gap: 5px;
+  gap: 5px; /* Spaces out the suggestion buttons */
   flex-wrap: wrap;
 }
 
 .query-buttons button {
-  background-color: #e8f4f8;
-  border: 1px solid #bde0fe;
-  color: #1d3557;
+  background-color: lightblue;
+  border: 1px solid blue;
+  color: darkblue;
   padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.75rem;
+  border-radius: 10px;
   cursor: pointer;
 }
 
+/* --- Bottom Typing Input Area --- */
 .chat-input-area {
   display: flex;
   padding: 10px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid lightgray;
 }
 
 .chat-input-area input {
-  flex: 1;
+  flex: 1; /* Makes the text box stretch to fill space */
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid gray;
   border-radius: 4px;
   margin-right: 8px;
 }
 
 .chat-input-area button {
-  background-color: #1d3557;
+  background-color: darkblue;
   color: white;
   border: none;
   padding: 10px 18px;
