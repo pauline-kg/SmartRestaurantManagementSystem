@@ -2,28 +2,36 @@ import React, { useState } from 'react';
 import { AI_KNOWLEDGE_BASE } from '../../data/mockData';
 import './AIChat.css';
 
-export default function AIChat() {
+// TODO: fix chat bubble scrolling if messages get too long
+function AIChat() {
   const [messages, setMessages] = useState([
     { sender: 'ai', text: 'Hello! I am your AI assistant. How can I help you today?' }
   ]);
   const [input, setInput] = useState('');
 
   const handleSend = (questionText) => {
+    // figure out if it came from the input box or a quick-prompt button
     const query = questionText || input;
     if (!query.trim()) return;
+
+    console.log("User asked:", query); // debug log to check queries
 
     const userMessage = { sender: 'user', text: query };
     setMessages((prev) => [...prev, userMessage]);
 
-    // Local simulation lookup matching the dataset table
+    // search through the knowledge base array
     const match = AI_KNOWLEDGE_BASE.find(
       (kb) => kb.question.toLowerCase() === query.toLowerCase()
     );
 
-    const botResponse = match
-      ? match.answer
-      : "I'm sorry, I don't have information on that. Try asking about our daily specials or vegetarian options!";
+    let botResponse = "";
+    if (match) {
+      botResponse = match.answer;
+    } else {
+      botResponse = "I'm sorry, I don't have information on that. Try asking about our daily specials or vegetarian options!";
+    }
 
+    // fake a short loading delay so it feels like a real chat bot
     setTimeout(() => {
       setMessages((prev) => [...prev, { sender: 'ai', text: botResponse }]);
     }, 400);
@@ -43,6 +51,7 @@ export default function AIChat() {
         ))}
       </div>
 
+      {/* suggestion buttons mapped from mock data */}
       <div className="sample-queries">
         <p>Quick questions you can ask:</p>
         <div className="query-buttons">
@@ -67,3 +76,5 @@ export default function AIChat() {
     </div>
   );
 }
+
+export default AIChat;
