@@ -1,60 +1,66 @@
+/* --- Reservation Card Container --- */
 .reservation-container {
-  background-color: #fff;
+  background-color: white;
   padding: 30px;
   border-radius: 8px;
   max-width: 600px;
-  margin: 20px auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin: 30px auto; /* Centers the form on the page */
+  border: 2px solid lightgray; /* Simple border outline instead of shadows */
 }
 
 .reservation-container h2 {
   margin-bottom: 20px;
-  color: #1d3557;
+  color: darkblue;
 }
 
+/* --- Form Layout --- */
 .reservation-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 15px; /* Spaces out all form rows */
 }
 
+/* --- Individual Input Group --- */
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 5px; /* Keeps labels close to their input fields */
   flex: 1;
 }
 
 .form-group label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #555;
+  font-size: 14px;
+  font-weight: bold;
+  color: gray;
 }
 
-.form-group input, .form-group select {
+.form-group input, 
+.form-group select {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid gray;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
+/* --- Side-by-Side Form Row --- */
 .form-row {
   display: flex;
-  gap: 15px;
+  gap: 15px; /* Spaces out inputs sitting next to each other */
 }
 
+/* --- Submit Reservation Button --- */
 .reserve-btn {
-  background-color: #e63946;
+  background-color: lightgreen;
   color: white;
   padding: 12px;
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
 }
 
 .reserve-btn:hover {
-  background-color: #d62828;
+  background-color: green;
 }
