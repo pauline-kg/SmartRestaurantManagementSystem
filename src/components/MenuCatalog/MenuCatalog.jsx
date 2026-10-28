@@ -2,21 +2,27 @@ import React, { useState } from 'react';
 import FoodCard from './FoodCard';
 import './MenuCatalog.css';
 
-export default function MenuCatalog({ menuItems, onAddToCart }) {
+// TODO: make sure filter states reset when switching categories if needed
+function MenuCatalog({ menuItems, onAddToCart }) {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [filterVegetarian, setFilterVegetarian] = useState(false);
   const [filterGlutenFree, setFilterGlutenFree] = useState(false);
 
+  // filter logic for search bar and category tabs
   const filteredItems = menuItems.filter((item) => {
     const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase()) || 
                           item.description.toLowerCase().includes(search.toLowerCase());
+    
     const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
+    
     const matchesVeg = !filterVegetarian || item.isVegetarian;
     const matchesGF = !filterGlutenFree || item.isGlutenFree;
 
     return matchesSearch && matchesCategory && matchesVeg && matchesGF;
   });
+
+  // console.log("Currently filtered items count:", filteredItems.length);
 
   return (
     <div className="menu-container">
@@ -29,6 +35,7 @@ export default function MenuCatalog({ menuItems, onAddToCart }) {
           onChange={(e) => setSearch(e.target.value)}
         />
 
+        {/* category buttons */}
         <div className="category-tabs">
           {['all', 'starters', 'mains', 'desserts', 'beverages'].map((cat) => (
             <button
@@ -71,3 +78,5 @@ export default function MenuCatalog({ menuItems, onAddToCart }) {
     </div>
   );
 }
+
+export default MenuCatalog;
