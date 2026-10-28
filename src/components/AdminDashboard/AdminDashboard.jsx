@@ -1,30 +1,51 @@
 import React, { useState } from 'react';
 import './AdminDashboard.css';
 
-export default function AdminDashboard({ menuItems, setMenuItems, orders, setOrders, reservations, setReservations }) {
+// TODO: clean up dashboard components later if there's time before submission
+function AdminDashboard({ menuItems, setMenuItems, orders, setOrders, reservations, setReservations }) {
   const [activeTab, setActiveTab] = useState('menu');
-  const [newItem, setNewItem] = useState({ name: '', category: 'mains', price: '', description: '', ingredients: '' });
+  
+  // form state for adding new food items
+  const [newItem, setNewItem] = useState({ 
+    name: '', 
+    category: 'mains', 
+    price: '', 
+    description: '', 
+    ingredients: '' 
+  });
 
-  // Menu Operations
+  // Menu CRUD operations
   const handleAddItem = (e) => {
     e.preventDefault();
-    const item = {
+    console.log("submitting new item:", newItem); // testing if form fires
+
+    const itemToAdd = {
       ...newItem,
       id: Date.now(),
       price: parseFloat(newItem.price),
       image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop"
     };
-    setMenuItems([...menuItems, item]);
+
+    setMenuItems([...menuItems, itemToAdd]);
+    // reset form
     setNewItem({ name: '', category: 'mains', price: '', description: '', ingredients: '' });
   };
 
   const handleDeleteItem = (id) => {
-    setMenuItems(menuItems.filter((i) => i.id !== id));
+    // window.confirm("Are you sure?"); -> decided to just delete directly for now
+    const updated = menuItems.filter((i) => i.id !== id);
+    setMenuItems(updated);
   };
 
-  // Status updates
+  // Status updates for orders and tables
   const updateOrderStatus = (id, newStatus) => {
-    setOrders(orders.map((o) => (o.id === id ? { ...o, status: newStatus } : o)));
+    const updatedOrders = orders.map((o) => {
+      if (o.id === id) {
+        return { ...o, status: newStatus };
+      }
+      return o;
+    });
+    setOrders(updatedOrders);
   };
 
   const updateReservationStatus = (id, newStatus) => {
@@ -35,6 +56,7 @@ export default function AdminDashboard({ menuItems, setMenuItems, orders, setOrd
     <div className="admin-container">
       <h2>Admin Dashboard</h2>
       
+      {/* tab navigation buttons */}
       <div className="admin-tabs">
         <button className={activeTab === 'menu' ? 'active' : ''} onClick={() => setActiveTab('menu')}>Menu CRUD</button>
         <button className={activeTab === 'orders' ? 'active' : ''} onClick={() => setActiveTab('orders')}>Orders ({orders.length})</button>
@@ -116,3 +138,5 @@ export default function AdminDashboard({ menuItems, setMenuItems, orders, setOrd
     </div>
   );
 }
+
+export default AdminDashboard;
